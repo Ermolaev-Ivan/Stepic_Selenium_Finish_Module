@@ -1,18 +1,37 @@
 from .pages.product_page import PageObject
 from .pages.base_page import BasePage
 from .pages.locators import ProductPageLocators
+import pytest, time
 
 
-# def test_guest_can_add_product_to_basket(browser):  # получаем число для степика)
-#     link = 'http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-shellcoders-handbook_209/?promo=newYear'
+@pytest.mark.parametrize('link', ["http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0",
+                                  "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer1",
+                                  "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer2",
+                                  "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer3",
+                                  "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer4",
+                                  "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer5",
+                                  "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer6",
+                                  pytest.param(
+                                      "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer7",
+                                      marks=pytest.mark.xfail),
+                                  "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer8",
+                                  "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer9"])
+def test_guest_can_add_product_to_basket(browser, link):  # получаем число для степика)
+    page = PageObject(browser, link)
+    page.open()
+    page.add_to_basket()
+    page.solve_quiz_and_get_code()
+    page.should_be_product_in_basket()
+
+
+# """не нравица мне это, но можно сделать так"""
+# @pytest.mark.parametrize('promo_offer',
+#                          [pytest.param(i, marks=pytest.mark.xfail(i == 7, reason='BUG')) for i in range(10)])
+# def test_guest_can_add_product_to_basket(browser, promo_offer):
+#     link = f"http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer{promo_offer}"
 #     page = PageObject(browser, link)
 #     page.open()
 #     page.add_to_basket()
 #     page.solve_quiz_and_get_code()
+#     page.should_be_product_in_basket()
 
-
-def test_guest_can_add_product_to_basket(browser):
-    link = 'http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-shellcoders-handbook_209/'
-    page = PageObject(browser, link)
-    page.open()
-    page.add_to_basket()

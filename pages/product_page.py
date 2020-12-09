@@ -28,9 +28,9 @@ class ProductPage(BasePage):
                    *ProductPageLocators.NAME_PRODUCT).text, "The item in the cart does not match the added item"
 
     def should_not_be_success_message(self):
-        return self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
                "Success message is presented, but should not be"
 
     def should_is_disappeared(self):
-        return self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
                "The success message does not disappear, but should"

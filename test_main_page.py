@@ -24,16 +24,16 @@ class TestLoginFromMainPage():
 
 def test_guest_cant_see_product_in_basket_opened_from_main_page(browser):
     link = "http://selenium1py.pythonanywhere.com/"
-    page = BasketPage(browser, link)
+    page = MainPage(browser, link)
     page.open()
+    page = BasketPage(browser, browser.current_url)
     page.basket_is_empty()
+
 
 @pytest.mark.xfail
 def test_guest_see_product_in_basket_opened_from_main_page(browser):
     link = "http://selenium1py.pythonanywhere.com"
-    page = BasketPage(browser, link)
+    page = MainPage(browser, link)
     page.open()
+    page = BasketPage(browser, browser.current_url)
     page.basket_is_full()
-
-
-

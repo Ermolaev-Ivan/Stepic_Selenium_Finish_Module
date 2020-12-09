@@ -1,15 +1,25 @@
 from selenium.webdriver.common.by import By
 
 
+
+
 class BasePageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
+    USER_ICON = (By.CSS_SELECTOR, ".icon-user")
 
 
 class LoginPageLocators:
     REGISTER_FORM = (By.CSS_SELECTOR, '#register_form')
     LOGIN_FORM = (By.CSS_SELECTOR, '#login_form')
     LOGIN_SUBSTRING = 'login'
+    REGISTER_EMAIL_FIELD = (By.TAG_NAME, 'input[id="id_registration-email"]')
+    REGISTER_PASSWORD_FIELD_1 = (By.TAG_NAME, 'input[id="id_registration-password1"]')
+    REGISTER_PASSWORD_FIELD_2 = (By.TAG_NAME, 'input[id="id_registration-password2"]')
+    REGISTER_BUTTON = (By.TAG_NAME, 'button[name="registration_submit"]')
+    LOGIN_EMAIL_FIELD = (By.TAG_NAME, 'input[id="id_login-username"]')
+    LOGIN_PASSWORD_FIELD = (By.TAG_NAME, 'input[id="id_login-password"]')
+    MESSAGE_REGISTER = (By.TAG_NAME, 'div[class="alertinner wicon"]')
 
 
 class ProductPageLocators:
@@ -23,6 +33,8 @@ class ProductPageLocators:
     SUCCESS_MESSAGE = (By.CSS_SELECTOR,
                        '#messages > div:nth-child(1) > div > strong')
     PRODUCT_IN_SUCCESS_MESSAGE = (By.CSS_SELECTOR, '#messages > div:nth-child(1) > div > strong')
+
+
 
 
 class BasketPageLocators:

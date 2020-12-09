@@ -1,6 +1,6 @@
 from .base_page import BasePage
 from .locators import BasketPageLocators
-from selenium.common.exceptions import NoSuchElementException
+
 
 
 class BasketPage(BasePage):

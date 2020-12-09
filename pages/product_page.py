@@ -27,12 +27,10 @@ class ProductPage(BasePage):
                self.browser.find_element(
                    *ProductPageLocators.NAME_PRODUCT).text, "The item in the cart does not match the added item"
 
-    """negative test"""
-
-    def should_not_be_success_message(self):  # проверяет появляется ли сообщение о добавлении в корзину
+    def should_not_be_success_message(self):
         return self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
-            "Success message is presented, but should not be"
+               "Success message is presented, but should not be"
 
-    def should_is_disappeared(self):  # проверяет исчезает ли сообщение, которое должно исчезать
+    def should_is_disappeared(self):
         return self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
-            "The success message does not disappear, but should"
+               "The success message does not disappear, but should"

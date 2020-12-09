@@ -41,11 +41,12 @@ def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
     link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
     page = BasketPage(browser, link)
     page.open()
-    page.basket_is_empty()
+    assert page.basket_is_empty()
 
 
+@pytest.mark.xfail
 def test_guest_see_product_in_basket_opened_from_product_page(browser):
     link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
     page = BasketPage(browser, link)
     page.open()
-    page.basket_is_full()
+    assert page.basket_is_full()

@@ -29,5 +29,5 @@ class BasketPageLocators:
     BASKET_BUTTON = (By.TAG_NAME, 'a[class="btn btn-default"]')
     BASKET_TOTAL = (By.CSS_SELECTOR,
                     '#default > header > div.page_inner > div > div.basket-mini.pull-right.hidden-xs')
-    BASKET_IS_EMPTY_MESSAGE = (By.CSS_SELECTOR, '#content_inner > p ')
+    BASKET_IS_EMPTY = (By.CSS_SELECTOR, '#content_inner > p')
     BASKET_IS_FULL = (By.ID, 'basket_formset')

@@ -26,14 +26,14 @@ def test_guest_cant_see_product_in_basket_opened_from_main_page(browser):
     link = "http://selenium1py.pythonanywhere.com/"
     page = BasketPage(browser, link)
     page.open()
-    assert page.basket_is_empty()
+    page.basket_is_empty()
 
 @pytest.mark.xfail
 def test_guest_see_product_in_basket_opened_from_main_page(browser):
     link = "http://selenium1py.pythonanywhere.com"
     page = BasketPage(browser, link)
     page.open()
-    assert page.basket_is_full()
+    page.basket_is_full()
 
 
 
